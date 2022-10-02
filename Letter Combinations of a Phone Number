@@ -1,0 +1,59 @@
+class Solution {
+public:
+
+unordered_map<char,string> comb = {
+    {'2',"abc"},
+    {'3',"def"},
+    {'4',"ghi"},
+    {'5',"jkl"},
+    {'6',"mno"},
+    {'7',"pqrs"},
+    {'8',"tuv"},
+    {'9',"wxyz"}
+    
+};
+
+void helper(string &digits,int start,int end,vector<string> &ans)
+{
+    if(start>end)
+    {
+        ans.push_back("");
+        return;
+    }
+    
+    helper(digits,start+1,end,ans);
+    
+    string num = comb[digits[start]];
+    
+    vector<string> finalAns(ans.size()*num.size());
+    
+    int k=0;
+    for(int i=0;i<num.size();i++)
+    {
+        for(int j=0;j<ans.size();j++)
+        {
+            finalAns[k] = num[i] + ans[j];
+            k++;
+        }
+ 
+    }
+    
+    ans=finalAns;
+    
+}
+
+vector<string> letterCombinations(string digits) 
+{
+    
+
+    if(digits.size() == 0)
+    {
+        return {};
+    }
+    
+    vector<string> ans;
+   helper(digits,0,digits.size()-1,ans);
+    
+    return ans;
+    
+}
