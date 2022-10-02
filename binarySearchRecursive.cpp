@@ -1,4 +1,4 @@
-#Solution by DivyanshuKaushik
+//Solution by DivyanshuKaushik
 #include <bits/stdc++.h>
 using namespace std;
 
